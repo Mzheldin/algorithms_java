@@ -219,4 +219,17 @@ public class MyLinkedList<Item> implements Iterable<Item>{
         while (iterator.hasNext()) sb.append(iterator.next() + " ");
         return sb.toString();
     }
+
+    public void clear(){
+        if (isEmpty()) return;
+        Node current = start.getNext();
+        while (true) {
+            current.setPrevious(null);
+            if (current == end){
+                current = null;
+                break;
+            }
+            current = current.getNext();
+        }
+    }
 }

@@ -22,4 +22,21 @@ public class MyLinkedListStack<Item> {
     public boolean isEmpty(){
         return list.isEmpty();
     }
+
+    public void clearStack(){
+        list.clear();
+    }
+
+    @Override
+    public String toString() {
+        return list.toString();
+    }
+
+    public MyLinkedListStack(){
+
+    }
+
+    public MyLinkedListStack(Item...arr){
+        for (Item o: arr) { push(o); }
+    }
 }
