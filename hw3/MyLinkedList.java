@@ -132,23 +132,23 @@ public class MyLinkedList<Item> implements Iterable<Item>{
     }
 
     public Item remove(Item item){ //удаление по элементу
-        if (isEmpty()) throw  new NoSuchElementException();
-        Item temp;
-        Node current = start;
-        while (!item.equals(current.getItem())){
-            if (current == end) throw  new NoSuchElementException();
-            current = current.getNext();
-        }
-        if (current == start) temp = removeFirst();
-        else if (current == end) temp = removeLast();
-        else {
-            temp = current.getItem();
-            current.getPrevious().setNext(current.getNext());
-            current.getNext().setPrevious(current.getPrevious());
-            current = null;
-            size--;
-        }
-        return temp;
+        if (contains(item)){
+            Item temp;
+            Node current = start;
+            while (!item.equals(current.getItem())){
+                current = current.getNext();
+            }
+            if (current == start) temp = removeFirst();
+            else if (current == end) temp = removeLast();
+            else {
+                temp = current.getItem();
+                current.getPrevious().setNext(current.getNext());
+                current.getNext().setPrevious(current.getPrevious());
+                current = null;
+                size--;
+            }
+            return temp;
+        } else return null;
     }
 
     public boolean contains(Item item){ //проверка наличия элемента
